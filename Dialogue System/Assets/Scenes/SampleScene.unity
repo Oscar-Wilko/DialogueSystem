@@ -253,12 +253,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text_array:
   - "\xA6yup\xA6Dialogue Example 1 with text and stuff here."
-  - "\xA6a=w\xA6Dialogue \xA6col = 0.5,0.1,0.4\xA6Example 2 with text and stuff here."
-  - "\xA6a=si\xA6\xA6size = 0.75\xA6Dialogue Example \xA6col = 1,1,1,0.2\xA63 with
+  - "\xA6a=w\xA6Dialogue \xA6col = 0.5,0.1,0.4\xA6\xA6a=g\xA6Example 2 with text
+    and stuff here."
+  - "\xA6a=sh\xA6\xA6size = 0.75\xA6Dialogue Example \xA6col = 1,1,1,0.2\xA63 with
     text and stuff here."
-  - "\xA6size = 0.5\xA6Dialogue Example 4 with text and stuff here."
-  - "\xA6speed = 0.2\xA6\xA6size = 0.5\xA6Dialogue Example 5\xA6speed = 1.0\xA6 with
-    text\xA6speed = 1.0\xA6 and stuff here."
+  - "\xA6si= 0.5\xA6Dialogue Example 4 with text and stuff here."
+  - "\xA6sp=0.2\xA6\xA6si=0.5\xA6Dialogue Example 5\xA6speed = 1.0\xA6 with text\xA6speed
+    = 1.0\xA6 and stuff here."
   sprite_prefab: {fileID: 2228225129845922057, guid: 96fc236c1ffad094f9906e7eb167395e, type: 3}
   dialogue_box: {fileID: 2093648444}
   spritesheet: {fileID: 2800000, guid: edea1e3de0a2ab74195a92e4ca7db5e3, type: 3}
@@ -466,8 +467,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 799.6, y: -453.2}
-  m_SizeDelta: {x: 600, y: 200}
+  m_AnchoredPosition: {x: 925.6, y: -552.4}
+  m_SizeDelta: {x: 600, y: 71.5401}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2093648446
 MonoBehaviour:

@@ -100,6 +100,7 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         GenerateSpritesheetValues();
+        RevertRectTransform();
     }
 
     void Update()
@@ -280,8 +281,10 @@ public class DialogueManager : MonoBehaviour
             anchor_pos = new Vector2(anchor_pos.x + (new_character_offset + spritesheet_values[index_val].width)*current_scale_modifier, anchor_pos.y);
 
             // Reaching the end of the dialogue box
-            if (anchor_pos.x >= dialogue_box.GetComponent<RectTransform>().rect.width - box_padding)
+            Rect cur_rect = dialogue_box.GetComponent<RectTransform>().rect;
+            if (anchor_pos.x >= cur_rect.width - box_padding)
             {
+                dialogue_box.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, cur_rect.height - new_line_offset);
                 anchor_pos = new Vector2(box_padding, anchor_pos.y + new_line_offset * max_scale_in_line);
                 max_scale_in_line = 0.0f;
                 current_line.Clear();
@@ -312,7 +315,7 @@ public class DialogueManager : MonoBehaviour
             }
 
             // Decrease timer
-            timer -= time_between_characters/current_speed_modifier;
+            timer -= (time_between_characters/current_speed_modifier);
         }
     }
 
@@ -352,6 +355,7 @@ public class DialogueManager : MonoBehaviour
             case "sp":
             case "speed":
                 if (code_arguements.Count >= 0) current_speed_modifier = (float)Convert.ToDouble(code_arguements[0]);
+                timer = 0;
                 break;
 
             /// ANIMATION STYLES
@@ -415,6 +419,7 @@ public class DialogueManager : MonoBehaviour
     {
         // Reset Textbox and Variables
         ResetVariables();
+        RevertRectTransform();
 
         dialogue_state = DialogueState.Talking;
         current_string = text_array[text_index];
@@ -444,6 +449,10 @@ public class DialogueManager : MonoBehaviour
         current_speed_modifier = 1.0f;
     }
 
+    private void RevertRectTransform()
+    {
+        dialogue_box.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, - new_line_offset + box_padding * 2);
+    }
 
     // Generate each characters widths and positions based on pixel values
     private void GenerateSpritesheetValues()
